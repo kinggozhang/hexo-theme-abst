@@ -1,0 +1,14 @@
+<!-- Featured Tags -->
+<% if(theme['featured-tags']) { %>
+<section>
+    <!-- no hr -->
+    <h5><a href="<%= config.root %>tags/"><%= __('FEATURED TAGS') %></a></h5>
+    <div>
+        <% site.tags.map(function(tag){  %>
+            <% if(tag.length > theme['featured-condition-size']) { %>
+            <a class="mt-1 btn btn-outline-info" href="<%= url_for(tag.path) %>" title="<%= tag.name %>" rel="<%= tag.length %>"><%= tag.name %></a>
+            <% } %>
+        <% }) %>
+    </div>
+</section>
+<% }%>

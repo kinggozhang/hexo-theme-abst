@@ -1,0 +1,16 @@
+---
+layout: layout
+---
+<!-- Main Content -->
+<div class="container">
+ 
+        
+            <!-- 标签云 -->
+            <div id='tag_cloud' class="tags">
+                <% site.tags.map(function(tag){  %>
+                    <a class="mt-1 btn btn-outline-info" href="<%- url_for(tag.path) %>" title="<%= tag.name %>" rel="<%= tag.length %>"><%= tag.name %></a>
+                <% }) %>
+            </div>
+
+
+</div>

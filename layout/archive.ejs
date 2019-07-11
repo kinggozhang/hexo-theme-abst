@@ -1,0 +1,27 @@
+---
+layout: page
+---
+
+<!-- Main Content -->
+<div class="container">
+   <% if(is_archive()){ %>
+   <h2 class="text-info"><span  class="fa fa-calendar"></span><%- page.year %>/<%- page.month %><h2>
+   <%} else if(is_tag()){ %>
+   <h2 class="text-info"><span  class="fa fa-tag"></span><%- page.tag %><h2>  
+   <% } else if(is_category()) { %>
+   <h2 class="text-info"><span  class="fa fa-folder-open"></span><%- page.category %><h2>  
+   <% } %>
+   
+    <div class="list-group">
+    
+    <% page.posts.each(function(post){ %>
+            
+           
+    <a class="list-group-item list-group-item-action" href="<%- url_for(post.path) %>"><%- post.title %></a>
+            
+             
+    <%});%>
+    </div>
+
+
+</div>

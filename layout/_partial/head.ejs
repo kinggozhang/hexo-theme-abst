@@ -1,0 +1,28 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<%= config.description %>">
+    <meta name="keyword"  content="<%= config.keyword %>">
+    <link rel="shortcut icon" href="<%= config.root %>img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <title>
+        <% if (page.title) { %>
+          <%= page.title + ' - ' + config.keywords%>
+        <% } else{%>
+          <%= config.keywords%>
+        <% } %>
+    </title>
+
+    <link rel="canonical" href="<%= config.url + config.root + (page.path||'').replace('index.html', '') %>">
+
+    <!-- Bootstrap Core CSS -->
+<% if (theme['bootstrapCSS_CDN']) {%>
+   <%- css(theme['bootstrapCSS_CDN']) %>
+<% }else{ %>
+   <%- css('css/bootstrap.min.css') %>
+<% } %>
+    
+    <!-- Custom Fonts -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>

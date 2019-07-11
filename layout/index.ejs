@@ -1,0 +1,70 @@
+---
+layout: page
+---
+<% page.posts.each(function(post){ if(!post.isStiky){ %>
+<a href="<%- config.root %><%- post.path %>">
+    <h2 class="post-title text-body">
+        <%- post.title || "Untitled" %>
+    </h2>
+    <h3 class="text-secondary">
+        <%- post.subtitle || "" %>
+    </h3>
+</a>
+<div class="row">
+
+<div class="col-sm-3">	
+<% 
+let srcReg = /img\s+src=[\'\"]?([^\'\"]*)[\'\"]?/g;
+var imgArr = post.content.match(srcReg);
+if(imgArr && imgArr.length >0) {%>
+<a href="<%- config.root %><%- post.path %>"><<%- imgArr[0] %> style='width:100%'></a>
+<%} else {%>
+<a href="<%- config.root %><%- post.path %>"><img class="img-fluid" src="http://imgs.sumoon.com/small/<%- post.content.length%1024 %>.jpg"></a>
+<%}%>
+</div>
+<div class="col-sm-9">
+
+    <a href="<%- config.root %><%- post.path %>">
+
+        <div class="text-body">
+            <%- truncate(strip_html(post.content), {length: 200, omission: '......'}) %>...
+        </div>
+    </a>
+    <% if (config.home_posts_tag){%>
+        <p class="text-secondary" style="margin: 10px 0;">
+            Posted by <%- post.author || config.author %> on
+            <%= post.date.format(config.date_format) %>
+        </p>
+        <div class="tags">
+            <% post.tags.forEach(function(tag){ %>
+              <a class="btn btn-info " href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+            <% }) %>
+        </div>
+    <%} else {%>
+        <p class="text-secondary">
+            Posted by <%- post.author || config.author %> on
+            <%= post.date.format(config.date_format) %>
+        </p>
+    <%}%>
+
+</div>
+</div>
+<hr>
+<% }}); %>
+
+
+<!-- Pager -->
+
+<ul class="pagination">
+    <% if (page.prev){ %>
+        <li class="page-item">
+            <a class="page-link"  href="<%- config.root %><%- page.prev_link %>">&larr; Newer Posts</a>
+        </li>
+    <% } %>
+    <% if (page.next){ %>
+        <li class="page-item">
+            <a class="page-link" href="<%- config.root %><%- page.next_link %>">Older Posts &rarr;</a>
+        </li>
+    <% } %>
+</ul>
+

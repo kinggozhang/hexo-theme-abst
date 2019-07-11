@@ -1,0 +1,84 @@
+<!-- Post Header -->
+
+<div class="bg-info">
+        <div class="container pb-3 pt-3">
+          
+                <% if (is_post()) { %>
+                    
+                        <div class="tags">
+                            <% page.tags.forEach(function(tag){ %>
+                              <a class="btn btn-primary" href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+                            <% }) %>
+                        </div>
+                        <h1 class="text-white"><%= page.title %></h1>
+                        <h2 class="text-secondary"><%= page.subtitle || "" %></h2>
+                        <span class="text-muted">
+                            Posted by <%- page.author || config.author %> on
+                            <%= page.date.format(config.date_format) %>
+                        </span>
+                    
+                <% } else { %>
+				<% if (is_home() && theme.slideshow ) { %>
+                
+                <%- ah_list_posts({tagname:'hexo',callback:function(title,url){return title+url}}) %>
+				<!-- slideshow -->
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+					  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					  <li data-target="#myCarousel" data-slide-to="1"></li>
+					  <li data-target="#myCarousel" data-slide-to="2"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+					  <div class="carousel-item active">
+                        <a href="#">
+						<img class="mx-auto d-block img-fluid" src="img/slideshow/slider1.jpg" alt="APP">
+						<div class="carousel-caption">
+						  <h3>Slider1</h3>
+						  <p>This description of s1.</p>
+						</div>      
+                        </a>
+					  </div>
+
+					  <div class="carousel-item">
+                      <a href="#">
+						<img class="mx-auto d-block img-fluid"  src="img/slideshow/slider2.jpg" alt="website">
+						<div class="carousel-caption">
+						  <h3>Slider2</h3>
+						  <p>This description of s2.</p>
+						</div>	
+                        </a>
+					  </div>
+					
+					  <div class="carousel-item">
+                      <a href="#">
+						<img  class="mx-auto d-block img-fluid" src="img/slideshow/slider3.jpg" alt="GZH">
+						<div class="carousel-caption">
+						  <h3>Slider3</h3>
+						  <p>This description of s3.</p>
+						</div>  
+                      </a>
+					  </div>
+					</div>
+
+					<!-- Left and right controls -->
+                      <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </a>
+                      <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </a>
+				</div>
+                 <% } else { %>
+                    <div class="site-heading"  style="padding:40px">
+                        <h1><%= __(page.title || config.title) %></h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading"><%= __(page.description || config.subtitle || "") %></span>
+                    </div>
+                <% } %>
+                <% } %>
+        
+        </div>
+</div>

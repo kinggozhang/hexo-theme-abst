@@ -1,0 +1,15 @@
+<% if (site.posts.length){ %>
+
+  
+  
+    <h5><%- __('RECENT POSTS') %></h5>
+    
+
+     <ul class="list-group">
+      <% site.posts.sort('date', -1).limit(5).each(function(post){ %>
+        <li class="list-group-item pl-1 pt-1 pb-1">
+          <a href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a>
+        </li>
+      <% }) %>
+    </ul>
+<% } %>

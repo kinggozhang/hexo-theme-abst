@@ -1,0 +1,17 @@
+<% if (site.posts.length){ %>
+    <h5><%= __('ARCHIVES') %></h5>
+    <div class="list-group">
+    
+      <%- ah_list_archives({show_count: theme.show_count, type: theme.archive_type, callback:function(name,url,cnt)
+                        {
+                        let result='<a href="';
+                        result += url;
+                        result +='" class="list-group-item">';
+                        result += name;
+                        result += ' <span class="badge badge-primary">';
+                        result += cnt;
+                        result += '</span></a>';                        
+                        return result; 
+                        }}) %>
+    </div>
+<% } %>

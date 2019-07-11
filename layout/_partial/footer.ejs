@@ -1,0 +1,32 @@
+<!-- Footer -->
+<footer>
+    <div class="bg-light">
+
+        <p class="copyright text-center text-muted">
+            Copyright &copy; <%= config.author %> <%= new Date().getFullYear() %> <span><a href="http://beian.miit.gov.cn">沪ICP备17039036号-1</a></span>
+            <br>
+            Powered by <a href="http://www.hexo.io">Hexo</a> 
+            <span style="display: inline-block; margin: 0 5px;">
+                <i class="fa fa-heart"></i>
+            </span> 
+            Theme by <a href="https://github.com/kinggozhang/hexo-theme-abst">ABST</a> 
+        </p>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<% if (theme['jquery_CDN']) {%>
+   <%- js(theme['jquery_CDN']) %>
+<% }else{ %>
+   <%- js('js/jquery.min.js') %>
+<% } %>
+
+
+<!-- Bootstrap Core JavaScript -->
+<% if (theme['bootstrapJS_CDN']) {%>
+   <%- js(theme['bootstrapJS_CDN']) %>
+<% }else{ %>
+   <%- js('js/bootstrap.min.js') %>
+<% } %>
+
+
