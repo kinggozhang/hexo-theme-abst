@@ -6,6 +6,7 @@ layout: layout
  
         
             <!-- 标签云 -->
+            <h1 class='text-secondary'><%= __('FEATURED TAGS') %></h1>
             <div id='tag_cloud' class="tags">
                 <% site.tags.map(function(tag){  %>
                     <a class="mt-1 btn btn-outline-info" href="<%- url_for(tag.path) %>" title="<%= tag.name %>" rel="<%= tag.length %>"><%= tag.name %></a>

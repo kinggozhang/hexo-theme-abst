@@ -37,7 +37,7 @@ if(imgArr && imgArr.length >0) {%>
         </p>
         <div class="tags">
             <% post.tags.forEach(function(tag){ %>
-              <a class="btn btn-info " href="<%= config.root %>tags/#<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+              <a class="btn btn-info " href="<%= url_for(tag.path) %>" title="<%= tag.name %>"><%= tag.name %></a>
             <% }) %>
         </div>
     <%} else {%>
